@@ -1,16 +1,24 @@
-const removeFromArray = function(array, ...argRemove) {
+const removeFromArray = function (array, ...argRemove) {
+    const sortedArray = array.sort(function (a, b) {
+      return a - b;
+    });
+    const sortedArg = argRemove.sort(function (a, b) {
+      return a - b;
+    });
+    const newArray = [];
+  
     if (Array.isArray(array)) {
-        let newArray = [];
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] != argRemove) {
-                newArray.push(array[i]);
-            }
-            
+      for (let i = 0; i < sortedArray.length; i++) {
+        if (sortedArg.includes(sortedArray[i])) {
+          console.log("continue");
+          continue;
         }
-        return newArray;
+        newArray.push(sortedArray[i]);
+      }
+      console.log(newArray);
+      return newArray;
     }
-    return false;
-};
+  };
 
 // Do not edit below this line
 module.exports = removeFromArray;
